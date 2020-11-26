@@ -4,8 +4,11 @@ import os, sys
 #depended upon scrapy and genie and data_store
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from genie.genie import Genie
+from DataStore.dir import Dir
+import DataStore.src as src
 
 MAX_NUMBER_SUBTITLES = 7
+PATH = Dir()
 
 class Sense():
     def __init__(self,data=''):
@@ -76,7 +79,8 @@ class Sense():
 
 
 if __name__ == "__main__":
-    src_filename = "../scrapy/symptom_cause_url_list.txt"
-    trg_filename = "subtitle_list.txt"
+    src_filename = src.src_filename
+    trg_filename = src.trg_filename
+    #trg_filename = os.path.join(PATH.pro_data, trg_filename)
     sense = Sense()
     sense.save_subtitle_list(src_filename, trg_filename)
