@@ -144,7 +144,7 @@ class Sense():
         sub_headings = sub_heading
         for line in data.split('\n'):
             if line.startswith('<h1>'):
-                main_heading = line.strip('<h1>')
+                main_heading = re.sub('<.*>', '', line)
                 final_data = "{}{}\n".format(final_data, main_heading)
             if not main_heading:
                 continue
